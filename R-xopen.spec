@@ -4,19 +4,28 @@
 #
 Name     : R-xopen
 Version  : 1.0.0
-Release  : 5
+Release  : 6
 URL      : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Summary  : Open System Files, 'URLs', Anything
 Group    : Development/Tools
 License  : MIT
+Requires: R-cli
+Requires: R-withr
+BuildRequires : R-cli
 BuildRequires : R-processx
 BuildRequires : R-ps
 BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 
 %description
-with their associated programs.
+# xopen
+> Open System Files, URLs, Anything
+[![Linux Build Status](https://travis-ci.org/r-lib/xopen.svg?branch=master)](https://travis-ci.org/r-lib/xopen)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/r-lib/xopen?branch=master&svg=true)](https://ci.appveyor.com/project/gaborcsardi/xopen)
+[![](http://www.r-pkg.org/badges/version/xopen)](http://www.r-pkg.org/pkg/xopen)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/xopen)](http://www.r-pkg.org/pkg/xopen)
 
 %prep
 %setup -q -c -n xopen
@@ -26,10 +35,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540772657
+export SOURCE_DATE_EPOCH=1552837113
 
 %install
-export SOURCE_DATE_EPOCH=1540772657
+export SOURCE_DATE_EPOCH=1552837113
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -65,8 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library xopen|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  xopen || :
 
 
 %files
@@ -92,4 +100,7 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/xopen/help/xopen.rdx
 /usr/lib64/R/library/xopen/html/00Index.html
 /usr/lib64/R/library/xopen/html/R.css
+/usr/lib64/R/library/xopen/tests/testthat.R
+/usr/lib64/R/library/xopen/tests/testthat/helper.R
+/usr/lib64/R/library/xopen/tests/testthat/test.R
 /usr/lib64/R/library/xopen/xdg-open
