@@ -4,14 +4,12 @@
 #
 Name     : R-xopen
 Version  : 1.0.0
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Summary  : Open System Files, 'URLs', Anything
 Group    : Development/Tools
 License  : MIT
-Requires: R-cli
-Requires: R-withr
 BuildRequires : R-cli
 BuildRequires : R-processx
 BuildRequires : R-ps
@@ -35,10 +33,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552837113
+export SOURCE_DATE_EPOCH=1552916389
 
 %install
-export SOURCE_DATE_EPOCH=1552837113
+export SOURCE_DATE_EPOCH=1552916389
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
