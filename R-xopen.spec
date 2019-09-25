@@ -4,26 +4,18 @@
 #
 Name     : R-xopen
 Version  : 1.0.0
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Summary  : Open System Files, 'URLs', Anything
 Group    : Development/Tools
 License  : MIT
-BuildRequires : R-cli
+Requires: R-processx
 BuildRequires : R-processx
-BuildRequires : R-ps
-BuildRequires : R-rlang
-BuildRequires : R-withr
 BuildRequires : buildreq-R
 
 %description
-# xopen
-> Open System Files, URLs, Anything
-[![Linux Build Status](https://travis-ci.org/r-lib/xopen.svg?branch=master)](https://travis-ci.org/r-lib/xopen)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/r-lib/xopen?branch=master&svg=true)](https://ci.appveyor.com/project/gaborcsardi/xopen)
-[![](http://www.r-pkg.org/badges/version/xopen)](http://www.r-pkg.org/pkg/xopen)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/xopen)](http://www.r-pkg.org/pkg/xopen)
+with their associated programs.
 
 %prep
 %setup -q -c -n xopen
@@ -32,13 +24,13 @@ BuildRequires : buildreq-R
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552916389
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569377059
 
 %install
-export SOURCE_DATE_EPOCH=1552916389
+export SOURCE_DATE_EPOCH=1569377059
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -67,12 +59,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  xopen || :
+R CMD check --no-manual --no-examples --no-codoc xopen || :
 
 
 %files
