@@ -4,7 +4,7 @@
 #
 Name     : R-xopen
 Version  : 1.0.0
-Release  : 22
+Release  : 23
 URL      : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xopen_1.0.0.tar.gz
 Summary  : Open System Files, 'URLs', Anything
